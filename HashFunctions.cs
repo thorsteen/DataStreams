@@ -1,54 +1,43 @@
 using System;
+using System.Numerics;
 
 namespace DataStreams
 {
+    
     class HashFunctions
     {
-        
-        public ulong multiShiftHashing(ulong x){  
-            // We generate "a" as a random odd uint64 number.
-            Random  rnd = new  Random();
-            ulong a = 0UL;
-            Byte[] b = new  Byte [8];
-            rnd.NextBytes(b);
-            for(int i = 0; i < 7; ++i) {
-                a = (a << 8) + (ulong)b[i];
-            }
-            a = (a << 8) + ((ulong)b[7] | 1);
 
-            // We generate "l" to be a positive integer less than 64.
-            int l = rnd.Next(1, 64);
+        private BigInteger a1;
+        private BigInteger a2;
+        private BigInteger b;
+        private int l;
+        private int q;
 
-            return (a*x) >> (64-l);
+        private BigInteger p;
+        public HashFunctions(){
+            l = 34;
+            a1 = BigInteger.Parse("189121246254233103121");
+            a2 = BigInteger.Parse("2542203721011110892402349387");
+            b = BigInteger.Parse("111421382162224021710128121165");
+            q = 89;
+            p = ((1 << q) - 1);
         }
 
-         public ulong muliplyModPrimeHashing(ulong x){  
-            
-            ulong p = (ulong)Math.Pow(2,89) - 1; 
+        public BigInteger multiplyShiftHashing(BigInteger x){  
+            return (a1 * x) >> (64 - l);
+        }
 
-            Random  rnd = new  System.Random ();
-
-            // We generate "a" as a random. We have for a that: 0 <= a < p
-            ulong a = 0UL;
-            Byte[] rndBytes = new  Byte [11];
-            rnd.NextBytes(rndBytes);
-            for(int i = 0; i < 11; ++i) {
-                a = (a << 8) + (ulong)rndBytes[i];
+        public BigInteger multiplyModPrimeHashing(BigInteger x){
+            BigInteger temp;
+            BigInteger y;
+            temp = a2 * x + b;
+            y = (temp & p) + (temp >> q);
+            if (y >= p) {
+                y -= p;
             }
+            Console.WriteLine((y % (1 << l)));
 
-            // We generate "b" as a random. We have for b that: 0 <= b < p
-            ulong b = 0UL;
-            rnd.NextBytes(rndBytes);
-            for(int i = 0; i < 11; ++i) {
-                b = (a << 8) + (ulong)rndBytes[i];
-            }
-
-            // We generate "l" to be a positive integer less than 64.
-            int l = rnd.Next(1, 64);
-        
-            // we need to use exercise 2.7 and 2.8
-            return ((a * x + b) % p) % (ulong)Math.Pow(2, l);
-
+            return (y & ((1 << l) - 1));
         }
     }
 }

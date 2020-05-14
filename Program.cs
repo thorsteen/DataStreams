@@ -6,7 +6,9 @@ namespace DataStreams
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Tests tests = new Tests();
+            tests.testMultiplyShiftHashingFunction();
+            tests.testMultiplyModPrimeHashingFunction();
         }
     }
 }
