@@ -6,20 +6,26 @@ using System.Diagnostics;
 namespace DataStreams {
     class Tests {
 
-        private int n = 20; 
-        private int l = 500;
-
         HashFunctions hashFunctions = new HashFunctions();
-        public void testMultiplyShiftHashingFunction() {
+        private List<BigInteger> listStream = new List<BigInteger>();
+        private int n, l;
 
-            IEnumerator <Tuple <ulong , int>> stream = CreateStreams.CreateStream(n, l).GetEnumerator();
+        public Tests() {
+            this.n = 10000000;
+            this.l = 10000;
+            IEnumerable <Tuple <ulong , int>> stream = CreateStreams.CreateStream(n, l);
+            foreach(var item in stream) {
+                this.listStream.Add(item.Item1);
+            }
+        }
+        public void testMultiplyShiftHashingFunction() {
             Console.WriteLine("Multiply shift hashing:");
             BigInteger sum = 0;
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-            while(stream.MoveNext()) {
-                ulong key = stream.Current.Item1;
-                sum +=hashFunctions.multiplyShiftHashing((BigInteger)key);
+            foreach (var item in this.listStream)
+            {
+                sum += hashFunctions.multiplyShiftHashing(item);
             }
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
@@ -28,14 +34,12 @@ namespace DataStreams {
         }
 
         public void testMultiplyModPrimeHashingFunction() {
-            IEnumerator <Tuple <ulong , int>> stream = CreateStreams.CreateStream(n, l).GetEnumerator();
             Console.WriteLine("Multiply mod prime hashing:"); 
             BigInteger sum = 0;
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-            while(stream.MoveNext()) {
-                ulong key = stream.Current.Item1;
-                sum += hashFunctions.multiplyModPrimeHashing((BigInteger)key);
+            foreach(var item in this.listStream){
+                sum += hashFunctions.multiplyModPrimeHashing(item);
             }
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;

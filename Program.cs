@@ -4,6 +4,7 @@ namespace DataStreams
 {
     class Program
     {
+        HashFunctions hashFunctions = new HashFunctions();
         static void Main(string[] args)
         {
             Tests tests = new Tests();

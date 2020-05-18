@@ -35,9 +35,8 @@ namespace DataStreams
             if (y >= p) {
                 y -= p;
             }
-            Console.WriteLine((y % (1 << l)));
 
-            return (y & ((1 << l) - 1));
+            return (y - ((y >> l) << l));
         }
     }
 }
