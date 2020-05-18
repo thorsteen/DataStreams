@@ -1,13 +1,13 @@
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/bin/Debug/netcoreapp3.1/DataStreams
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/bin/Debug/netcoreapp3.1/DataStreams.deps.json
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/bin/Debug/netcoreapp3.1/DataStreams.runtimeconfig.json
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/bin/Debug/netcoreapp3.1/DataStreams.runtimeconfig.dev.json
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/bin/Debug/netcoreapp3.1/DataStreams.dll
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/bin/Debug/netcoreapp3.1/DataStreams.pdb
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/obj/Debug/netcoreapp3.1/DataStreams.csprojAssemblyReference.cache
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/obj/Debug/netcoreapp3.1/DataStreams.csproj.CoreCompileInputs.cache
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/obj/Debug/netcoreapp3.1/DataStreams.AssemblyInfoInputs.cache
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/obj/Debug/netcoreapp3.1/DataStreams.AssemblyInfo.cs
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/obj/Debug/netcoreapp3.1/DataStreams.dll
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/obj/Debug/netcoreapp3.1/DataStreams.pdb
-/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/obj/Debug/netcoreapp3.1/DataStreams.genruntimeconfig.cache
+C:\Users\tsl19\Documents\DataStreams\bin\Debug\netcoreapp3.1\DataStreams.exe
+C:\Users\tsl19\Documents\DataStreams\bin\Debug\netcoreapp3.1\DataStreams.deps.json
+C:\Users\tsl19\Documents\DataStreams\bin\Debug\netcoreapp3.1\DataStreams.runtimeconfig.json
+C:\Users\tsl19\Documents\DataStreams\bin\Debug\netcoreapp3.1\DataStreams.runtimeconfig.dev.json
+C:\Users\tsl19\Documents\DataStreams\bin\Debug\netcoreapp3.1\DataStreams.dll
+C:\Users\tsl19\Documents\DataStreams\bin\Debug\netcoreapp3.1\DataStreams.pdb
+C:\Users\tsl19\Documents\DataStreams\obj\Debug\netcoreapp3.1\DataStreams.csprojAssemblyReference.cache
+C:\Users\tsl19\Documents\DataStreams\obj\Debug\netcoreapp3.1\DataStreams.csproj.CoreCompileInputs.cache
+C:\Users\tsl19\Documents\DataStreams\obj\Debug\netcoreapp3.1\DataStreams.AssemblyInfoInputs.cache
+C:\Users\tsl19\Documents\DataStreams\obj\Debug\netcoreapp3.1\DataStreams.AssemblyInfo.cs
+C:\Users\tsl19\Documents\DataStreams\obj\Debug\netcoreapp3.1\DataStreams.dll
+C:\Users\tsl19\Documents\DataStreams\obj\Debug\netcoreapp3.1\DataStreams.pdb
+C:\Users\tsl19\Documents\DataStreams\obj\Debug\netcoreapp3.1\DataStreams.genruntimeconfig.cache

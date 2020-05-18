@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/DataStreams.csproj": {}
+    "C:\\Users\\tsl19\\Documents\\DataStreams\\DataStreams.csproj": {}
   },
   "projects": {
-    "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/DataStreams.csproj": {
+    "C:\\Users\\tsl19\\Documents\\DataStreams\\DataStreams.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/DataStreams.csproj",
+        "projectUniqueName": "C:\\Users\\tsl19\\Documents\\DataStreams\\DataStreams.csproj",
         "projectName": "DataStreams",
-        "projectPath": "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/DataStreams.csproj",
-        "packagesPath": "/home/marcus/.nuget/packages/",
-        "outputPath": "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/obj/",
+        "projectPath": "C:\\Users\\tsl19\\Documents\\DataStreams\\DataStreams.csproj",
+        "packagesPath": "C:\\Users\\tsl19\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tsl19\\Documents\\DataStreams\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/marcus/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\tsl19\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -44,13 +44,7 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }
