@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tsl19\\Documents\\DataStreams\\DataStreams.csproj": {}
+    "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/DataStreams.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tsl19\\Documents\\DataStreams\\DataStreams.csproj": {
+    "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/DataStreams.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tsl19\\Documents\\DataStreams\\DataStreams.csproj",
+        "projectUniqueName": "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/DataStreams.csproj",
         "projectName": "DataStreams",
-        "projectPath": "C:\\Users\\tsl19\\Documents\\DataStreams\\DataStreams.csproj",
-        "packagesPath": "C:\\Users\\tsl19\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tsl19\\Documents\\DataStreams\\obj\\",
+        "projectPath": "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/DataStreams.csproj",
+        "packagesPath": "/home/marcus/.nuget/packages/",
+        "outputPath": "/home/marcus/Desktop/Studie/Randomiserede algoritmer til dataanalyse/Assignments/implementeringsprojekt/DataStreams/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tsl19\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/marcus/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -44,7 +44,13 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -7,27 +7,27 @@ namespace DataStreams
     public class HashTabel
     {
         private readonly int size;
-        private readonly LinkedList<Tuple<int,int>>[] items;
+        private readonly LinkedList<Tuple<ulong,int>>[] items;
 
         public HashTabel(int size)
         {
             this.size = size;
-            items = new LinkedList<Tuple<int,int>>[size];
+            items = new LinkedList<Tuple<ulong,int>>[size];
         }
 
-        protected int GetArrayPosition(int key)
+        protected int GetArrayPosition(ulong key)
         {
             int position = key.GetHashCode() % size;
             return Math.Abs(position);
         }
 
-        public int Find(int key)
+        public int Find(ulong key)
         {
             int position = GetArrayPosition(key);
-            LinkedList<Tuple<int, int>> linkedList = GetLinkedList(position);
-            foreach (Tuple<int,int> item in linkedList)
+            LinkedList<Tuple<ulong, int>> linkedList = GetLinkedList(position);
+            foreach (Tuple<ulong,int> item in linkedList)
             {
-                if (item.Equals(key))
+                if (item.Item1.Equals(key))
                 {
                     return item.Item2;
                 }
@@ -36,11 +36,11 @@ namespace DataStreams
             return default(int);
         }
         
-        public void Set(int key, int value)
+        public void Set(ulong key, int value)
         {
             int position = GetArrayPosition(key);
-            LinkedList<Tuple<int, int>> linkedList = GetLinkedList(position);
-            foreach (Tuple<int,int> item in linkedList)
+            LinkedList<Tuple<ulong, int>> linkedList = GetLinkedList(position);
+            foreach (Tuple<ulong,int> item in linkedList)
             {
                 if (item.Equals(key))
                 {
@@ -50,19 +50,19 @@ namespace DataStreams
             }
         }
 
-        public void Add(int key, int value)
+        public void Add(ulong key, int value)
         {
             int position = GetArrayPosition(key);
-            LinkedList<Tuple<int, int>> linkedList = GetLinkedList(position);
-            Tuple<int, int> item = new Tuple<int, int>( key, value );
+            LinkedList<Tuple<ulong, int>> linkedList = GetLinkedList(position);
+            Tuple<ulong, int> item = new Tuple<ulong, int>( key, value );
             linkedList.AddLast(item);
         }
         
-        public void Increment(int key, int d)
+        public void Increment(ulong key, int d)
         {
             int position = GetArrayPosition(key);
-            LinkedList<Tuple<int, int>> linkedList = GetLinkedList(position);
-            foreach (Tuple<int,int> item in linkedList)
+            LinkedList<Tuple<ulong, int>> linkedList = GetLinkedList(position);
+            foreach (Tuple<ulong,int> item in linkedList)
             {
                 if (item.Equals(key))
                 {
@@ -72,13 +72,13 @@ namespace DataStreams
             }
         }
 
-        public void Remove(int key)
+        public void Remove(ulong key)
         {
             int position = GetArrayPosition(key);
-            LinkedList<Tuple<int, int>> linkedList = GetLinkedList(position);
+            LinkedList<Tuple<ulong, int>> linkedList = GetLinkedList(position);
             bool itemFound = false;
-            Tuple<int, int> foundItem = default(Tuple<int, int>);
-            foreach (Tuple<int,int> item in linkedList)
+            Tuple<ulong, int> foundItem = default(Tuple<ulong, int>);
+            foreach (Tuple<ulong,int> item in linkedList)
             {
                 if (item.Equals(key))
                 {
@@ -93,12 +93,12 @@ namespace DataStreams
             }
         }
 
-        protected LinkedList<Tuple<int, int>> GetLinkedList(int position)
+        protected LinkedList<Tuple<ulong, int>> GetLinkedList(int position)
         {
-            LinkedList<Tuple<int, int>> linkedList = items[position];
+            LinkedList<Tuple<ulong, int>> linkedList = items[position];
             if (linkedList == null)
             {
-                linkedList = new LinkedList<Tuple<int, int>>();
+                linkedList = new LinkedList<Tuple<ulong, int>>();
                 items[position] = linkedList;
             }
 

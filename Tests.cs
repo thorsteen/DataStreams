@@ -8,6 +8,7 @@ namespace DataStreams {
 
         HashFunctions hashFunctions = new HashFunctions();
         private List<BigInteger> listStream = new List<BigInteger>();
+
         private int n, l;
 
         public Tests() {
@@ -45,6 +46,21 @@ namespace DataStreams {
             TimeSpan ts = stopWatch.Elapsed;
             Console.WriteLine("sum from hash function: " + sum);
             Console.WriteLine("Running time: " + ts.ToString());
+        }
+
+        public void testHashTabel() {
+            Console.WriteLine("HashTabel tests");
+            HashTabel hash = new HashTabel(this.l);
+            IEnumerable <Tuple <ulong , int>> stream = CreateStreams.CreateStream(this.n, this.l);
+            foreach(var item in stream){
+                hash.Add((ulong)item.Item1, (int)item.Item2);
+            }
+            ulong sum = 0
+            foreach(var item in hash){
+                sum += Math.pow(item.Item2)
+            }
+            //for(int i = 0; i < hash.size; i++) {
+            //}
         }
     }
 }
