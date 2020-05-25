@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace DataStreams
 {
@@ -7,17 +8,30 @@ namespace DataStreams
     public class HashTabel
     {
         private readonly int size;
+        private readonly bool prime;
         private readonly LinkedList<Tuple<ulong,int>>[] items;
+        HashFunctions hashFunctions = new HashFunctions();
 
-        public HashTabel(int size)
+        public HashTabel(int size, bool Prime)
         {
             this.size = size;
             items = new LinkedList<Tuple<ulong,int>>[size];
+            this.prime = Prime;
         }
 
-        protected int GetArrayPosition(ulong key)
+        private int GetArrayPosition(ulong key)
         {
-            int position = key.GetHashCode() % size;
+            int position;
+
+            if (prime)
+            {
+                position = hashFunctions.multiplyModPrimeHashing(key) % size;
+            }
+            else
+            {
+                position = hashFunctions.multiplyShiftHashing(key) % size;
+            }
+
             return Math.Abs(position);
         }
 

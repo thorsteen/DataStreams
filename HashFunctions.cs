@@ -23,11 +23,11 @@ namespace DataStreams
             p = ((1 << q) - 1);
         }
 
-        public BigInteger multiplyShiftHashing(BigInteger x){  
-            return (a1 * x) >> (64 - l);
+        public int multiplyShiftHashing(ulong x){  
+            return (int)(a1 * x) >> (64 - l);
         }
 
-        public BigInteger multiplyModPrimeHashing(BigInteger x){
+        public int multiplyModPrimeHashing(ulong x){
             BigInteger temp;
             BigInteger y;
             temp = a2 * x + b;
@@ -36,7 +36,7 @@ namespace DataStreams
                 y -= p;
             }
 
-            return (y - ((y >> l) << l));
+            return (int)(y - ((y >> l) << l));
         }
     }
 }

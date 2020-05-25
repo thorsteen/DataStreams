@@ -7,7 +7,7 @@ namespace DataStreams {
     class Tests {
 
         HashFunctions hashFunctions = new HashFunctions();
-        private List<BigInteger> listStream = new List<BigInteger>();
+        private List<ulong> listStream = new List<ulong>();
 
         private int n, l;
 
@@ -50,15 +50,18 @@ namespace DataStreams {
 
         public void testHashTabel() {
             Console.WriteLine("HashTabel tests");
-            HashTabel hash = new HashTabel(this.l);
+            HashTabel hash = new HashTabel(this.l, true);
             IEnumerable <Tuple <ulong , int>> stream = CreateStreams.CreateStream(this.n, this.l);
-            foreach(var item in stream){
-                hash.Add((ulong)item.Item1, (int)item.Item2);
+            foreach (var item in stream)
+            {
+                hash.Add((ulong) item.Item1, (int) item.Item2);
+
+                foreach (var sum in stream)
+                {
+                    hash.Increment(sum.Item1, sum.Item2);
+                }
             }
-            ulong sum = 0
-            foreach(var item in hash){
-                sum += Math.pow(item.Item2)
-            }
+
             //for(int i = 0; i < hash.size; i++) {
             //}
         }
