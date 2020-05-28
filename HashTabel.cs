@@ -9,14 +9,17 @@ namespace DataStreams
     {
         private readonly int size;
         private readonly bool prime;
-        private readonly LinkedList<Tuple<ulong,int>>[] items;
-        HashFunctions hashFunctions = new HashFunctions();
+        public readonly LinkedList<Tuple<ulong,int>>[] items;
+        private HashFunctions hashFunctions;
+        private readonly bool FourU;
 
-        public HashTabel(int size, bool Prime)
+        public HashTabel(int size, bool Prime, bool FourU, HashFunctions hashFunctions)
         {
             this.size = size;
             items = new LinkedList<Tuple<ulong,int>>[size];
             this.prime = Prime;
+            this.FourU = FourU;
+            this.hashFunctions = hashFunctions;
         }
 
         private int GetArrayPosition(ulong key)
@@ -25,17 +28,20 @@ namespace DataStreams
 
             if (prime)
             {
-                position = hashFunctions.multiplyModPrimeHashing(key) % size;
+                position = (int) (hashFunctions.MultiplyModPrimeHashing(key) % (ulong) size);
+            }
+            else if (FourU)
+            {
+                position = (int) (hashFunctions.FourUniversal(key) % (ulong) size);
             }
             else
             {
-                position = hashFunctions.multiplyShiftHashing(key) % size;
+                position = (int) (hashFunctions.MultiplyShiftHashing(key) % (ulong) size);
             }
-
-            return Math.Abs(position);
+            return position;
         }
 
-        public int Find(ulong key)
+        public int Get(ulong key)
         {
             int position = GetArrayPosition(key);
             LinkedList<Tuple<ulong, int>> linkedList = GetLinkedList(position);
@@ -74,16 +80,25 @@ namespace DataStreams
         
         public void Increment(ulong key, int d)
         {
+            int foundValue = default;
+            bool itemFound = false;
             int position = GetArrayPosition(key);
             LinkedList<Tuple<ulong, int>> linkedList = GetLinkedList(position);
+            Tuple<ulong, int> foundItem = default;
             foreach (Tuple<ulong,int> item in linkedList)
             {
                 if (item.Equals(key))
                 {
-                    Remove(item.Item1);
-                    Add(item.Item1,item.Item2+d);
+                    itemFound = true;
+                    foundItem = item;
                 }
             }
+            if (itemFound)
+            {
+                foundValue = foundItem.Item2;
+                linkedList.Remove(foundItem);
+            }
+            Add(key,foundValue + d);
         }
 
         public void Remove(ulong key)
