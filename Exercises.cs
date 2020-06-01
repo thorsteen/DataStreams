@@ -20,7 +20,7 @@ namespace DataStreams{
 
 
         public static void exercise3(){
-            int n = 1000000;
+            int n = 10000000;
 
             Console.WriteLine("Exercise 3:\n");
 
@@ -49,6 +49,21 @@ namespace DataStreams{
         }
 
         public static void exercise7(){
+            int n = 1000000;
+            int l = 30;
+
+            Tests tests = new Tests(n, l);
+            
+            Console.WriteLine("Exercise 7:\n");
+
+            // Beregn den eksakte værdi af S for stømmen
+            Console.WriteLine("Multiply-shift hashing:");
+            tests.TestSquraedSums(HashFunctions.MultiplyShiftHashing);
+
+            for(int i = 0; i < 100; i++){
+
+            }
+
 
         }
 
