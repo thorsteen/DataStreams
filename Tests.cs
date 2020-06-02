@@ -44,8 +44,25 @@ namespace DataStreams
             Console.WriteLine("Running time: " + time.ToString());
         }
 
-        public void TestCountSketch(){
+        public ulong[] TestExperimentsWithCountSketch(int t){
 
+            int numberOfExperiments = 100;
+
+            ulong[] estimates = new ulong[numberOfExperiments];
+
+            for(int i = 0; i < numberOfExperiments; i++) {
+                BigInteger p = (1UL << 89) - 1UL;
+                BigInteger a0 = RandomBigIntegerGenerator.randomBigInteger(p);
+                BigInteger a1 = RandomBigIntegerGenerator.randomBigInteger(p);
+                BigInteger a2 = RandomBigIntegerGenerator.randomBigInteger(p);
+                BigInteger a3 = RandomBigIntegerGenerator.randomBigInteger(p);
+                List<BigInteger> list_of_as = new List<BigInteger>(){a0, a1, a2, a3};
+                long[] C = CountSketch.countSketch(stream, t, HashFunctions.FourUniversalHashing, 
+                                                   HashFunctions.CountSketchHashfunctions, list_of_as);
+                estimates[i] = CountSketch.estimate(C);
+            }
+            
+            return estimates;
         }
     }
 }
