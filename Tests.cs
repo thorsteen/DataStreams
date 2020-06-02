@@ -43,6 +43,11 @@ namespace DataStreams
             Console.WriteLine("sum: " + sum);
             Console.WriteLine("Running time: " + time.ToString());
         }
+        
+        public ulong TestSquraedSumsValue(Func<ulong, int, ulong> hashFunction) {
+
+            return SquaredSums.CalculatingSquaredSums(stream, hashFunction, l);
+        }
 
         public ulong[] TestExperimentsWithCountSketch(int t){
 

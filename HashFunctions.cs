@@ -59,7 +59,7 @@ namespace DataStreams
         */ 
         public static Tuple<ulong, int> CountSketchHashfunctions(BigInteger g_x, int t)
         {
-            BigInteger h_x = ((g_x >> t) << t);
+            BigInteger h_x = ((g_x)& ((1UL << t)-1));
 
             BigInteger b_x = g_x >> (b - 1);
 
