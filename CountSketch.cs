@@ -30,13 +30,27 @@ namespace DataStreams {
         }
 
         public static float meanSquaredError(ulong[] estimates, ulong S){
-            ulong sum = 0;
+            float sum = 0;
             for(int i = 0; i < 100; i++){
                 ulong error = estimates[i] - S;
                 sum += error * error;
             }
 
-            return sum / (float) 100;
+            sum /= (float) 100;
+
+            return sum;
+        }
+        
+        public static float mean(ulong[] estimates, ulong S){
+            ulong sum = 0;
+            for(int i = 0; i < 100; i++)
+            {
+                sum += estimates[i];
+            }
+
+            sum = sum / 100;
+
+            return sum;
         }
 
         public static ulong median(ulong[] estimates){

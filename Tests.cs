@@ -65,5 +65,26 @@ namespace DataStreams
             
             return estimates;
         }
+        
+        public void TestRunningTimeOf4UniHashFunction()
+        {
+            BigInteger sum = 0;
+            BigInteger p = (1UL << 89) - 1UL;
+            BigInteger a0 = RandomBigIntegerGenerator.randomBigInteger(p);
+            BigInteger a1 = RandomBigIntegerGenerator.randomBigInteger(p);
+            BigInteger a2 = RandomBigIntegerGenerator.randomBigInteger(p);
+            BigInteger a3 = RandomBigIntegerGenerator.randomBigInteger(p);
+            List<BigInteger> list_of_as = new List<BigInteger>(){a0, a1, a2, a3};
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            foreach (var item in stream)
+            {
+                sum += HashFunctions.FourUniversalHashing(item.Item1, list_of_as);
+            }
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            Console.WriteLine("sum from hash function: " + sum.ToString());
+            Console.WriteLine("Running time: " + ts.ToString());
+        }
     }
 }
