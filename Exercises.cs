@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 
 namespace DataStreams{
     public static class Exercises{
@@ -51,40 +52,40 @@ namespace DataStreams{
         }
 
         public static void exercise7(){
-            int n = 10000000;
-            int t = 30;
+            int n = 100000;
+            int l = 20;
+            int t = 6;
 
-            Tests tests = new Tests(n, t);
+            Tests tests = new Tests(n, l);
             
             Console.WriteLine("Exercise 7:\n");
 
-            // Beregn den eksakte værdi af S for stømmen
-            ulong S = tests.TestSquraedSumsValue(HashFunctions.MultiplyShiftHashing);
-            
-            Console.WriteLine("Exact hashing sum^2 value S: "+S.ToString());
-            
-            ulong sum_1 = 0;
-            ulong sum_2 = 0;
+            ulong S = tests.TestSquraedSums(HashFunctions.MultiplyShiftHashing);
             
             ulong[] estimates  = tests.TestExperimentsWithCountSketch(t);
-            
-            Console.WriteLine();
-            foreach (var estimate in estimates)
-            {
-                sum_1 += estimate;
-                sum_2 += estimate - S;
+            ulong[] sortedEstimates = new ulong[estimates.Length];
+            Array.Copy(estimates, sortedEstimates, estimates.Length);
+            Array.Sort(sortedEstimates);
+
+            using(StreamWriter countSketchEstimatesFile = new StreamWriter("Count-sketch_sorted_estimates.txt", true)){
+                for(int i = 0; i < sortedEstimates.Length; i++){
+                    countSketchEstimatesFile.WriteLine((i + 1) + ", " + sortedEstimates[i]);
+                }
             }
 
-            double MSE = Math.Pow((int) sum_2, 2) / 100;
-            double mu =  sum_1 / 100;
-            double var = Math.Cbrt(MSE);
-            double S_var = (2 * Math.Pow((int) S, 2)) / (1UL << t);
-            
-            Console.WriteLine("MSE for Count-Sketch:"+MSE.ToString());
-            Console.WriteLine("E[X] = "+mu.ToString());
-            Console.WriteLine("Var[X] = "+var.ToString());
-            Console.WriteLine("2S^2/m = "+S_var.ToString());
-            
+            float meanSquaredError = CountSketch.meanSquaredError(estimates, S);
+            Console.WriteLine("Mean squared error: " + meanSquaredError);
+
+            using(StreamWriter mediansFile = new StreamWriter("medians.txt", true)){
+                for(int i = 0; i < 9; i++){
+                    ulong[] G = new ulong[11];
+                    for(int j = 0; j < 11; j++){
+                        G[j] = estimates[(i * 11) + j];
+                    }
+                    mediansFile.WriteLine((i + 1) + ", " + CountSketch.median(G));
+                }
+            }
+
         }
 
         public static void exercise8()

@@ -34,7 +34,7 @@ namespace DataStreams
             Console.WriteLine("Running time: " + ts.ToString());
         }
 
-        public void TestSquraedSums(Func<ulong, int, ulong> hashFunction) {
+        public ulong TestSquraedSums(Func<ulong, int, ulong> hashFunction) {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             ulong sum = SquaredSums.CalculatingSquaredSums(stream, hashFunction, l);
@@ -42,11 +42,7 @@ namespace DataStreams
             TimeSpan time = stopWatch.Elapsed;
             Console.WriteLine("sum: " + sum);
             Console.WriteLine("Running time: " + time.ToString());
-        }
-        
-        public ulong TestSquraedSumsValue(Func<ulong, int, ulong> hashFunction) {
-
-            return SquaredSums.CalculatingSquaredSums(stream, hashFunction, l);
+            return sum;
         }
 
         public ulong[] TestExperimentsWithCountSketch(int t){
